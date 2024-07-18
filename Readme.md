@@ -1,5 +1,5 @@
 ## GFF3 Manipulator
-GFF3 (General Feature Format version 3) files are annotation files that, when paired with the appropriate genome file, can provide a wealth of information, such as the number of specific domains present in various segments of the genome (genes, CDS, RNA, etc.). This repository offers a collection of Python scripts that can be useful for various tasks required in genomic analysis.
+GFF3 (General Feature Format version 3) files are annotation files that, when paired with the appropriate genome file, can provide a wealth of information, such as the number of specific domains present in various segments of the genome (genes, CDS, RNA, etc.). This repository offers a collection of Python scripts that can be useful for various tasks required in genomic analysis. Each script requires that you provide the coordinate of the file you want to utilize. Use a Text manimpulator program to doing that
 
 # Conversion from GTF to GFF3
 GTF (General Transfer Format) files are another type of annotation file and, along with GFF3, are among the most widely used formats in genomics. Since this repository focuses on the use of GFF3 annotation files, a script is provided for converting GTF files to GFF3 format.
@@ -85,8 +85,8 @@ def add_introns_to_gff3(gff3_file, output_file):
                         output_handle.write(intron_line + '\n')
 
 if __name__ == "__main__":
-    gff3_file = "Araport11_GTF_genes_transposons.current.gff3"
-    output_file = "Araport11_GTF_genes_transposons_intron.current.gff3"
+    gff3_file = "/path/to/Annotation_file.gff3"
+    output_file = "/path/to/Annotation_file_with_intron.gff3"
     add_introns_to_gff3(gff3_file, output_file)
 ```
 
@@ -123,8 +123,8 @@ def extract_gene_sequences(genome_file, gff3_file, output_file):
 
 if __name__ == "__main__":
     genome_file = "TAIR10_chr_all.fasta"
-    gff3_file = "Araport11_GTF_genes_transposons_intron.current.gff3"
-    output_file = "full_sequences.fasta"
+    gff3_file = "/path/to/Annotation_file_with_intron.gff3"
+    output_file = "/path/to/all_sequences.fasta"
     extract_gene_sequences(genome_file, gff3_file, output_file)
 ```
 
@@ -142,15 +142,19 @@ def find_motif(sequence, motif):
             count += 1
     return count
 
-def main(fasta_file, motif):
-    with open(fasta_file, "r") as handle:
+def main(fasta_file, motif, output_file):
+    with open(fasta_file, "r") as handle, open(output_file, "w") as outfile:
         for record in SeqIO.parse(handle, "fasta"):
             sequence = str(record.seq)
             motif_count = find_motif(sequence, motif)
-            print(f"Sequence: {record.id}, Motif Count: {motif_count}")
+            result_line = f"Sequence: {record.id}, Motif Count: {motif_count}\n"
+            print(result_line.strip())
+            outfile.write(result_line)
 
 if __name__ == "__main__":
-    fasta_file = "full_sequences.fasta"
+    fasta_file = "/path/to/full_sequences.fasta"
     motif_to_find = "AGAAG"
-    main(fasta_file, motif_to_find)
+    output_file = "/path/to/motif_counts.txt"
+    main(fasta_file, motif_to_find, output_file)
+
 ```
