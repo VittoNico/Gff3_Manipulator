@@ -1,5 +1,5 @@
 ## GFF3 Manipulator
-GFF3 (General Feature Format version 3) files are annotation files that, when paired with the appropriate genome file, can provide a wealth of information, such as the number of specific domains present in various segments of the genome (genes, CDS, RNA, etc.). This repository offers a collection of Python scripts that can be useful for various tasks required in genomic analysis. Each script requires that you provide the coordinate of the file you want to utilize. Use a Text manimpulator program to doing that
+GFF3 (General Feature Format version 3) files are annotation files that, when paired with the appropriate genome file, can provide a wealth of information, such as the number of specific domains present in various segments of the genome (genes, CDS, RNA, etc.). This repository offers a collection of Python scripts that can be useful for various tasks required in genomic analysis. Each script requires that you provide the coordinate of the file you want to utilize. Use a Text manipulator program to doing that
 
 # Conversion from GTF to GFF3
 GTF (General Transfer Format) files are another type of annotation file and, along with GFF3, are among the most widely used formats in genomics. Since this repository focuses on the use of GFF3 annotation files, a script is provided for converting GTF files to GFF3 format.
