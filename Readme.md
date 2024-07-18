@@ -1,1 +1,1 @@
-
+GFF3 files are annotation file from which, when they are coupled with the appropriate genome file, can provide a large ammount of of information, such as number of a particular domain present in each segment of genome (Gene, CDS, RNA...) 
