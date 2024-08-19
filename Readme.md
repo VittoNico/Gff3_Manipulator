@@ -122,7 +122,7 @@ def extract_gene_sequences(genome_file, gff3_file, output_file):
         output_handle.write("\n".join(sequences))
 
 if __name__ == "__main__":
-    genome_file = "TAIR10_chr_all.fasta"
+    genome_file = "/path/to/genome_file.fasta"
     gff3_file = "/path/to/Annotation_file_with_intron.gff3"
     output_file = "/path/to/all_sequences.fasta"
     extract_gene_sequences(genome_file, gff3_file, output_file)
